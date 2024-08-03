@@ -1,0 +1,101 @@
+{
+  "name": "console-log-highlighter",
+  "displayName": "Console Log Highlighter",
+  "description": "A VS Code extension to highlight console.log statements in different colors, making them easily identifiable.",
+  "version": "0.1.0",
+  "publisher": "Sandip Halder",
+  "engines": {
+    "vscode": "^1.60.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "icon": "logo.png",
+  "activationEvents": [
+    "onLanguage:javascript",
+    "onLanguage:typescript",
+    "onCommand:consoleLogHighlighter.toggle"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "consoleLogHighlighter.toggle",
+        "title": "Toggle Console Log Highlighter"
+      }
+    ],
+    "configuration": {
+      "type": "object",
+      "properties": {
+        "consoleLogHighlighter.highlightColors": {
+          "type": "object",
+          "properties": {
+            "log": {
+              "type": "string",
+              "default": "rgba(255,255,0,0.2)",
+              "description": "Highlight color for console.log"
+            },
+            "error": {
+              "type": "string",
+              "default": "rgba(255, 99, 71, 1)",
+              "description": "Highlight color for console.error"
+            },
+            "warn": {
+              "type": "string",
+              "default": "rgba(246, 156, 0, 0.8)",
+              "description": "Highlight color for console.warn"
+            },
+            "info": {
+              "type": "string",
+              "default": "rgba(0,0,255,0.2)",
+              "description": "Highlight color for console.info"
+            }
+          }
+        },
+        "consoleLogHighlighter.textColor": {
+          "type": "string",
+          "default": "red",
+          "description": "Text color for highlighting console statements"
+        },
+        "consoleLogHighlighter.methods": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": [
+            "log",
+            "error",
+            "warn",
+            "info"
+          ],
+          "description": "List of console methods to highlight"
+        }
+      }
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-username/make-code-responsive"
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.60.0",
+    "@types/glob": "^7.1.3",
+    "@types/mocha": "^8.2.2",
+    "@types/node": "14.x",
+    "typescript": "^4.4.3",
+    "eslint": "^7.32.0",
+    "eslint-plugin-vscode": "^1.0.1",
+    "glob": "^7.1.7",
+    "mocha": "^9.1.3",
+    "vscode-test": "^1.6.1"
+  },
+  "dependencies": {}
+}
